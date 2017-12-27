@@ -30,14 +30,14 @@ class Todo extends Component {
             <div className="card-stacked">
               <div className="card-content">
                 <span className="card-title grey-text text-darken-4">
-                  <input type="checkbox" id="completed" checked={this.props.todo.completed} onClick={this.props.onCompleteTodo} />
-                  <label htmlFor="completed">{this.props.todo.subject}</label>
+                  <input type="checkbox" id={`${this.props.todo.id}-completed`} checked={this.props.todo.completed} onChange={this.props.onCompleteTodo} />
+                  <label htmlFor={`${this.props.todo.id}-completed`}>{this.props.todo.subject}</label>
                 </span>
                 <p>{this.props.todo.description}</p>
               </div>
               <div className="card-action">
-                <a onClick={this.toggleEditModeHandler}>Editar</a>
-                <a onClick={this.props.onRemove}>Eliminar</a>
+                <a href="#" onClick={this.toggleEditModeHandler}>Editar</a>
+                <a href="#" onClick={this.props.onRemove}>Eliminar</a>
               </div>
             </div>
           </div>

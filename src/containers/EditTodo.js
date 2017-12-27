@@ -29,35 +29,32 @@ class EditTodo extends Component{
 
   render() {
     return (
-      <li className="col s12 m7">
-          <h2 className="header" onClick={this.props.onClick}
-              style={{
-                textDecoration: this.props.todo.completed ? 'line-through' : 'none'
-              }}>          
-            <input placeholder="Título"
-                    value={this.state.inputs.subject}
-                    onChange={e => this.onChange({subject: e.currentTarget.value})}
-                    id="subject" 
+      <li className="col s12 m7">          
+        <div className="card">
+          <div className="card-stacked">
+            <div className="card-content">
+              <span className="card-title grey-text text-darken-4">
+                <input placeholder="Título"
+                        value={this.state.inputs.subject}
+                        onChange={e => this.onChange({subject: e.currentTarget.value})}
+                        id="subject" 
+                        type="text" />
+              </span>
+              <p>
+                <input placeholder="Descripción"
+                    value={this.state.inputs.description}
+                    onChange={e => this.onChange({description: e.currentTarget.value})}
+                    id="description"
                     type="text" />
-          </h2>
-          <div className="card horizontal">
-            <div className="card-stacked">
-              <div className="card-content">
-                <p>
-                  <input placeholder="Descripción"
-                     value={this.state.inputs.description}
-                     onChange={e => this.onChange({description: e.currentTarget.value})}
-                     id="description"
-                     type="text" />
-                </p>
-              </div>
-              <div className="card-action">
-                <a onClick={this.onSubmit}>Guardar</a>
-                <a onClick={this.props.toggleEditModeHandler}>Cancelar</a>
-              </div>
+              </p>
+            </div>
+            <div className="card-action">
+              <a href="#" onClick={this.onSubmit}>Guardar</a>
+              <a href="#" onClick={this.props.toggleEditModeHandler}>Cancelar</a>
             </div>
           </div>
-        </li>
+        </div>
+      </li>
     );
   }
 
