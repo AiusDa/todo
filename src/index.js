@@ -6,6 +6,8 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import axios from 'axios';
 
+import index from './index.css';
+
 import App from './components/App';
 import { conectionStart, conectionError, receiveTodos } from './actions';
 import reducer from './reducers';
