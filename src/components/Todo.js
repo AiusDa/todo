@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import EditTodo from './../containers/EditTodo';
 
@@ -42,9 +42,9 @@ class Todo extends Component {
             </div>
           </div>
         </li>
-      )
+      );
     } else {
-      return <EditTodo todo={this.props.todo} toggleEditModeHandler={this.toggleEditModeHandler}/>
+      return <EditTodo todo={this.props.todo} toggleEditModeHandler={this.toggleEditModeHandler}/>;
     }
   }
 
@@ -61,4 +61,4 @@ Todo.propTypes = {
   }).isRequired
 }
 
-export default Todo
+export default Todo;

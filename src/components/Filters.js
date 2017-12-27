@@ -1,5 +1,5 @@
-import React from 'react'
-import FilterLink from '../containers/FilterLink'
+import React from 'react';
+import FilterLink from './../containers/FilterLink';
 
 const Filters = () => (
   <p>
@@ -15,6 +15,6 @@ const Filters = () => (
       Completados
     </FilterLink>
   </p>
-)
+);
 
-export default Filters
+export default Filters;
