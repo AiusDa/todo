@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { editTodo } from './../actions';
+import axios from 'axios';
+
+import { conectionStart, conectionError, editTodo } from './../actions';
 
 class EditTodo extends Component{
 
@@ -23,7 +25,11 @@ class EditTodo extends Component{
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(editTodo(this.state.inputs));
+    console.log(this.state.inputs);
+    this.props.dispatch(conectionStart());
+    axios.put('https://salesforce-realtime-db.herokuapp.com/rest/V1/tasks', this.state.inputs)
+      .then(response => this.props.dispatch(editTodo(response.data[0])))
+      .catch(error => this.props.dispatch(conectionError(error.message)));
     this.props.toggleEditModeHandler();
   }
 

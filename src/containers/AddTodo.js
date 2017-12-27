@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions';
+import axios from 'axios';
+
+import { conectionStart, conectionError, addTodo } from './../actions';
 
 class AddTodo extends Component{
 
@@ -18,10 +20,8 @@ class AddTodo extends Component{
   initState() {
     return {
       inputs: {
-        id: '',
         subject: '',
-        description: '',
-        completed: false
+        description: ''
       }
     }
   }
@@ -34,8 +34,15 @@ class AddTodo extends Component{
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.dispatch(addTodo(this.state.inputs));
-    this.setState({inputs: this.initState().inputs})
+    this.props.dispatch(conectionStart());
+    axios.post('https://salesforce-realtime-db.herokuapp.com/rest/V1/tasks', this.state.inputs)
+      .then(response => {
+        this.props.dispatch(addTodo({...response.data[0], isclosed: false}));
+      })
+      .catch(error => {
+        this.props.dispatch(conectionError(error.message));
+      });
+    this.setState({inputs: this.initState().inputs});
   }
 
   render() {
